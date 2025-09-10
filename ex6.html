@@ -19,7 +19,28 @@
     <script>
         
         // add code here
-    
+        var selected_item = document.getElementById("select_item"); // <select> .. </select>
+        var ul = document.getElementById("shopList"); // get current shopping list
+
+        // add eventlistener when the selected item is changed
+        selected_item.addEventListener("change", addNewItem);
+
+        function addNewItem(){
+            var selectedValue = selected_item.value; // define selectedValue
+
+            var currentItems = ul.getElementsByTagName("ul");
+            for (var i = 0; i < currentItems.length; i++){
+                if (items[i].textContent === selectedValue){
+                    return; // item present, do nt add agn
+                }
+            }
+
+            var li = document.createElement("li");
+            var textNode = document.createTextNode(selectedValue);
+            li.appendChild(textNode);
+            ul.appendChild(li);
+        }
+
     </script>
 
     
